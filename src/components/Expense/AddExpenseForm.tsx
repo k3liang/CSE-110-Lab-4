@@ -24,7 +24,10 @@ const AddExpenseForm = () => {
             prevExpenses.length > 0
                 ? prevExpenses.concat([
                       {
-                          id: prevExpenses[prevExpenses.length - 1].id + 1 + "",
+                          id:
+                              +prevExpenses[prevExpenses.length - 1].id +
+                              1 +
+                              "",
                           name: name,
                           cost: cost,
                       },
@@ -34,8 +37,11 @@ const AddExpenseForm = () => {
     };
 
     const updateCost = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (!isNaN(+e.target.value))
-            setCost(+e.target.value);
+        if (!isNaN(+e.target.value)) {
+            if (+e.target.value >= 0) {
+                setCost(+e.target.value);
+            }
+        }
     };
 
     return (
@@ -52,6 +58,7 @@ const AddExpenseForm = () => {
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                             setName(e.target.value);
                         }}
+                        data-testid="NAMEINPUT"
                     ></input>
                 </div>
                 <div className="col-sm">
@@ -63,6 +70,7 @@ const AddExpenseForm = () => {
                         id="cost"
                         value={cost}
                         onChange={updateCost}
+                        data-testid="COSTINPUT"
                     ></input>
                 </div>
                 <div className="col-sm">
