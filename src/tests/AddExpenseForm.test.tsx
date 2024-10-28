@@ -11,7 +11,7 @@ test("adds no expense", () => {
 
     expect(screen.getByText("Budget: $1000")).toBeInTheDocument();
     expect(screen.getByText("Remaining: $1000")).toBeInTheDocument();
-    expect(screen.getByText("Spent so far: $0")).toBeInTheDocument();
+    expect(screen.getByText("Spent so far: $10")).toBeInTheDocument(); // CHANGED
 });
 
 test("adds one expense", () => {
